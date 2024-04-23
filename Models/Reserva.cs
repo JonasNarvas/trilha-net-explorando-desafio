@@ -1,3 +1,5 @@
+using System.Drawing;
+
 namespace DesafioProjetoHospedagem.Models
 {
     public class Reserva
@@ -15,17 +17,20 @@ namespace DesafioProjetoHospedagem.Models
 
         public void CadastrarHospedes(List<Pessoa> hospedes)
         {
-            // TODO: Verificar se a capacidade é maior ou igual ao número de hóspedes sendo recebido
-            // *IMPLEMENTE AQUI*
-            if (true)
-            {
+            // OK
+            if(hospedes.Count <= Suite.Capacidade){
+            
                 Hospedes = hospedes;
-            }
-            else
+                
+            }else
             {
-                // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
-                // *IMPLEMENTE AQUI*
+                //OK
+                Console.ForegroundColor = ConsoleColor.Red; //O erro fica em vermelho porque é mais assustador
+                throw new Exception("ERRO: \n A quantidade de hóspedes não pode ser maior que a capacidade da Suite");
+                
+                
             }
+            
         }
 
         public void CadastrarSuite(Suite suite)
@@ -35,23 +40,22 @@ namespace DesafioProjetoHospedagem.Models
 
         public int ObterQuantidadeHospedes()
         {
-            // TODO: Retorna a quantidade de hóspedes (propriedade Hospedes)
-            // *IMPLEMENTE AQUI*
-            return 0;
+            //OK
+            return Hospedes.Count;
+            
         }
 
         public decimal CalcularValorDiaria()
         {
-            // TODO: Retorna o valor da diária
-            // Cálculo: DiasReservados X Suite.ValorDiaria
-            // *IMPLEMENTE AQUI*
-            decimal valor = 0;
+            
+            //OK
+            decimal valor = DiasReservados * Suite.ValorDiaria;
 
             // Regra: Caso os dias reservados forem maior ou igual a 10, conceder um desconto de 10%
-            // *IMPLEMENTE AQUI*
-            if (true)
+            // OK
+            if (DiasReservados > 9)
             {
-                valor = 0;
+                valor = valor - (valor * 10/100);
             }
 
             return valor;
